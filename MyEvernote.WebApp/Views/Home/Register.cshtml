@@ -1,0 +1,73 @@
+﻿@using MyEvernote.WebApp.ViewModels
+@model RegisterViewModel
+@{
+    ViewBag.Title = "Kayıt Sayfası";
+}
+
+<link href="~/Content/Login-Register.css" rel="stylesheet" />
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+    .validation-summary-errors {
+        border: 2px dotted;
+        background-color: red;
+        border-radius: 8px;
+    }
+
+        .validation-summary-errors li {
+            color: #fff;
+            list-style-type: none;
+            padding: 5px;
+        }
+</style>
+@using (Html.BeginForm())
+{
+    <section class="login-info">
+        <div class="container">
+            <div class="row main">
+                <div class="form-header">
+                    <h1 class="text-center ">Kayıt Formu</h1>
+                </div>
+                <div class="main-content">
+
+                    @Html.ValidationSummary()
+
+                    <div class="input-group ">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+                        @Html.TextBoxFor(x => x.kullaniciAdi, new { @class = "form-control", placeholder = "Kullanıcı adınız" })
+                    </div>
+                    <div class="input-group ">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span></span>
+                        @Html.TextBoxFor(x => x.ePosta, new { @class = "form-control", placeholder = "E-posta adresiniz" })
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                        @Html.TextBoxFor(x => x.sifre, new { @class = "form-control", placeholder = "Şifreniz", type = "password" })
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                        @Html.TextBoxFor(x => x.sifreTekrar, new { @class = "form-control", placeholder = "Şifreniz(Tekrar)", type = "password" })
+                    </div>
+
+
+                    <div class="form-group ">
+                        <button href="#" type="submit" class="btn btn-danger btn-lg btn-block login-button">Login</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<!------ Include the above in your HEAD tag ---------->
+
+<script>
+    $(function myfunction() {
+
+        $("footer").parent().hide();
+
+    });
+</script>
