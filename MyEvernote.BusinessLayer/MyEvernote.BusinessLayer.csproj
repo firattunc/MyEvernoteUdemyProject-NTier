@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryBusiness.cs" />
+    <Compile Include="EvernoteUserBusiness.cs" />
     <Compile Include="NoteBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

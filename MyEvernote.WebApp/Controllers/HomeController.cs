@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyEvernote.Entities;
 using System.Net;
-using MyEvernote.WebApp.ViewModels;
+using MyEvernote.Entities.ValueObjects;
 
 namespace MyEvernote.WebApp.Controllers
 {
@@ -54,32 +54,32 @@ namespace MyEvernote.WebApp.Controllers
         }
         public ActionResult Register()
         {
+
             return View();
         }
         [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                if (model.kullaniciAdi=="aaa")
-                {
-                    ModelState.AddModelError("", "Kullanıcı adı kullanılıyor.");
-                }
-                if (model.ePosta=="aaa@aa.com")
-                {
-                    ModelState.AddModelError("", "E-Posta adı kullanılıyor.");
-                }
+            EvernoteUserBusiness eub = new EvernoteUserBusiness();
+            BusinessLayerResult<EvernoteUser> user = eub.RegisterUser(model);
 
-            }
-            foreach (var item in ModelState)
+            if (user.Errors.Count>0)
             {
-                if (item.Value.Errors.Count>0)
+                foreach (var item in user.Errors)
                 {
-                    return View(model);
+                    ModelState.AddModelError("", item);
                 }
-                
+                return View(model);
             }
+            
+            
             return RedirectToAction("RegisterOk");
+            
+        }
+        public ActionResult RegisterOk()
+        {
+
+            return View();
         }
     }
 }

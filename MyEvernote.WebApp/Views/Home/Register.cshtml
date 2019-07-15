@@ -1,4 +1,4 @@
-﻿@using MyEvernote.WebApp.ViewModels
+﻿@using MyEvernote.Entities.ValueObjects
 @model RegisterViewModel
 @{
     ViewBag.Title = "Kayıt Sayfası";
@@ -32,7 +32,7 @@
                 </div>
                 <div class="main-content">
 
-                    @Html.ValidationSummary()
+                    @Html.ValidationSummary(false)
 
                     <div class="input-group ">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
